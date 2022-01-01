@@ -3,11 +3,21 @@ package com.example.nba_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Switch;
+
+import com.example.nba_project.data.API.API_Client;
+import com.example.nba_project.data.API.API_interface;
+import com.example.nba_project.data.model.NbaPlayer;
+import com.example.nba_project.data.model.NbaPlayers;
+import com.example.nba_project.data.model.Team;
+import com.example.nba_project.data.model.Teams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Team> teams;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private GridLayoutManager gridLayoutManager;
     private RecyclerAdapter recyclerAdapter;
 
 
@@ -105,5 +116,18 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerView.setLayoutManager(layoutManager);
         this.recyclerView.setItemAnimator(new DefaultItemAnimator());
         this.recyclerView.setAdapter(recyclerAdapter);
+
+    }
+
+    public void switchLayout(View view){
+        Switch sw = (Switch)findViewById(R.id.switchLayout);
+
+        if(sw.isChecked()){
+            this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            this.recyclerView.setLayoutManager(gridLayoutManager);
+        }else{
+            this.layoutManager = new LinearLayoutManager(getApplicationContext());
+            this.recyclerView.setLayoutManager(layoutManager);
+        }
     }
 }

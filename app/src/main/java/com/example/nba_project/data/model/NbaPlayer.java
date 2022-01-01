@@ -1,4 +1,4 @@
-package com.example.nba_project;
+package com.example.nba_project.data.model;
 
 
 import com.google.gson.annotations.Expose;

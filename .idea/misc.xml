@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/decv-projects_2021/Android_dev/NBA_Android_app2/app/src/main/res/drawable/avatar_1.xml" value="0.3411458333333333" />
+        <entry key="..\:/decv-projects_2021/Android_dev/NBA_Android_app2/app/src/main/res/layout/activity_main.xml" value="0.32" />
+        <entry key="..\:/decv-projects_2021/Android_dev/NBA_Android_app2/app/src/main/res/layout/activity_team.xml" value="0.32" />
+        <entry key="..\:/decv-projects_2021/Android_dev/NBA_Android_app2/app/src/main/res/layout/team_layout.xml" value="0.32" />
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/activity_main.xml" value="0.325" />
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/activity_team.xml" value="0.325" />
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/team_layout.xml" value="0.325" />

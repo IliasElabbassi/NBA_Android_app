@@ -1,6 +1,9 @@
-package com.example.nba_project;
+package com.example.nba_project.data.API;
 
-import java.util.List;
+import com.example.nba_project.data.model.NbaPlayer;
+import com.example.nba_project.data.model.NbaPlayers;
+import com.example.nba_project.data.model.Team;
+import com.example.nba_project.data.model.Teams;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
