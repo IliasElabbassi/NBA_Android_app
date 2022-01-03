@@ -16,14 +16,14 @@ import com.example.nba_project.data.model.Team;
 
 import java.util.List;
 
-public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.MyviewHolder> {
+public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterTeams.MyviewHolder> {
 
     public static final String EXTRA_MESSAGE = "com.example.api_balldontlie.MESSAGE";
     private List<Team> teams;
     Context context;
 
 
-    public RecyclerAdapter(Context context, List<Team> teams) {
+    public RecyclerAdapterTeams(Context context, List<Team> teams) {
         this.teams = teams;
         this.context = context;
     }
@@ -35,17 +35,18 @@ public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.Myvi
 
     @NonNull
     @Override
-    public RecyclerAdapter.MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAdapterTeams.MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.team_layout, parent, false);
         return new MyviewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter.MyviewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdapterTeams.MyviewHolder holder, int position) {
         holder.division.setText(teams.get(position).getDivision());
         holder.city.setText(teams.get(position).getCity());
         holder.fullname.setText(teams.get(position).getFullName());
         holder.abreviation.setText(teams.get(position).getAbbreviation());
+        holder.id = teams.get(position).getId();
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,7 @@ public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.Myvi
                 bundle.putString("city", holder.city.getText().toString());
                 bundle.putString("fullname", holder.fullname.getText().toString());
                 bundle.putString("abreviation", holder.abreviation.getText().toString());
+                bundle.putInt("id", holder.id);
 
                 intent.putExtras(bundle);
                 context.startActivity(intent);
@@ -80,13 +82,14 @@ public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.Myvi
         private TextView city;
         private TextView fullname;
         private TextView division;
+        private int id;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
 
             abreviation = (TextView) itemView.findViewById(R.id.abreviation);
-            city = (TextView) itemView.findViewById(R.id.city);
-            fullname = (TextView) itemView.findViewById(R.id.fullname);
+            city = (TextView) itemView.findViewById(R.id.player_lastname);
+            fullname = (TextView) itemView.findViewById(R.id.player_firstname);
             division = (TextView) itemView.findViewById(R.id.division);
             constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
         }

@@ -18,11 +18,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avatar_1"
-        tools:srcCompat="@drawable/avatar_1" />
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        tools:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/division"
+        android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -32,38 +32,33 @@
         android:text="TextView"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/abreviation"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/player_firstname"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/player_firstname" />
 
     <TextView
-        android:id="@+id/abreviation"
+        android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="76dp"
         android:layout_marginBottom="16dp"
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/division"
         app:layout_constraintTop_toBottomOf="@+id/player_lastname" />
 
     <TextView
         android:id="@+id/player_lastname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="76dp"
         android:text="TextView"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/abreviation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toEndOf="@+id/player_firstname"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,12 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="30dp"
         android:text="TextView"
         android:textColor="#FAFAFA"
-        app:layout_constraintBottom_toTopOf="@+id/division"
-        app:layout_constraintEnd_toStartOf="@+id/player_lastname"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 

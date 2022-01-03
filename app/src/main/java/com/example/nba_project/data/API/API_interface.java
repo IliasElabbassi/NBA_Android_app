@@ -14,7 +14,7 @@ public interface API_interface {
     Call<NbaPlayers> getPlayers();
 
     @GET("players/{id}")
-    Call<NbaPlayer> getPlayers(@Path("id") int id);
+    Call<NbaPlayer> getPlayersByTeamId(@Path("id") int id);
 
     @GET("teams/{id}")
     Call<Team> getTeam(@Path("id") int id);
