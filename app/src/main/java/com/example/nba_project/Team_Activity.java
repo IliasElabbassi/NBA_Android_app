@@ -14,6 +14,7 @@ import com.example.nba_project.data.API.API_interface;
 import com.example.nba_project.data.model.Meta;
 import com.example.nba_project.data.model.NbaPlayer;
 import com.example.nba_project.data.model.NbaPlayers;
+import com.example.nba_project.data.model.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Team_Activity extends AppCompatActivity {
 
     API_interface apiService = API_Client.getClient().create(API_interface.class);
 
-    private int id;
+    private int teamIdD;
     private String fullname;
     private String division;
     private String city;
@@ -54,10 +55,11 @@ public class Team_Activity extends AppCompatActivity {
     private void getValueFromBundle(){
         Bundle bundle = getIntent().getExtras();
 
-        fullname = bundle.getString("fullname");
-        division = bundle.getString("division");
-        city = bundle.getString("city");
-        abreviation = bundle.getString("abreviation");
+        this.fullname = bundle.getString("fullname");
+        this.division = bundle.getString("division");
+        this.city = bundle.getString("city");
+        this.abreviation = bundle.getString("abreviation");
+        this.teamIdD = bundle.getInt("id");
     }
 
     @Override
@@ -98,7 +100,7 @@ public class Team_Activity extends AppCompatActivity {
                  @Override
                  public void onFailure(Call<NbaPlayers> call, Throwable t) {
                      Log.d("ILIAS","on failure" + t.toString());
-                 }
+                 };
              }
         );
 
@@ -130,8 +132,14 @@ public class Team_Activity extends AppCompatActivity {
         StringBuilder stringBuilder = new StringBuilder();
         for (NbaPlayer player : players.getData()){
             stringBuilder.append("-"+player.getFullName()+"\n");
-            this.players.add(player);
-            recyclerAdapter.notifyItemInserted(this.players.size());
+
+            Team playerTeam = player.getTeam();
+            int playerTeamID = playerTeam.getId();
+
+            if(playerTeamID == this.teamIdD) {
+                this.players.add(player);
+                recyclerAdapter.notifyItemInserted(this.players.size());
+            }
         }
         Log.d("ILIAS", "réponse = \n" + stringBuilder.toString());
     }
