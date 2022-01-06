@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.nba_project.data.API.API_Client;
 import com.example.nba_project.data.API.API_interface;
+import com.example.nba_project.data.model.Meta;
 import com.example.nba_project.data.model.NbaPlayer;
 import com.example.nba_project.data.model.NbaPlayers;
 
@@ -79,12 +80,18 @@ public class Team_Activity extends AppCompatActivity {
     }
 
     private void callPlayers(){
-        Call<NbaPlayers> call_players = apiService.getPlayers();
+        final int[] page = {0,0};
+
+        Call<NbaPlayers> call_players = apiService.getPlayersWithPage(page[0]);
 
         call_players.enqueue(new Callback<NbaPlayers>() {
                  @Override
                  public void onResponse(Call<NbaPlayers> call, Response<NbaPlayers> response) {
-                     Log.d("ILIAS","on response");
+                     Meta metaInfo = response.body().getMeta();
+                     page[0] = metaInfo.getTotalPages();
+                     page[1] = metaInfo.getCurrentPage();
+
+                     Log.d("ILIAS","on response [page "+Integer.toString(page[0])+"]");
                      displayListOfPlayers(response.body());
                  }
 
@@ -94,7 +101,30 @@ public class Team_Activity extends AppCompatActivity {
                  }
              }
         );
+
+
+        for(int i = page[1]; i <= page[0]; i++){
+            call_players = apiService.getPlayersWithPage(i);
+
+            call_players.enqueue(new Callback<NbaPlayers>() {
+                     @Override
+                     public void onResponse(Call<NbaPlayers> call, Response<NbaPlayers> response) {
+                         Meta metaInfo = response.body().getMeta();
+                         int currentPage = metaInfo.getCurrentPage();
+
+                         Log.d("ILIAS","on response [page "+Integer.toString(currentPage)+"]");
+                         displayListOfPlayers(response.body());
+                     }
+
+                     @Override
+                     public void onFailure(Call<NbaPlayers> call, Throwable t) {
+                         Log.d("ILIAS","on failure" + t.toString());
+                     }
+                 }
+            );
+        }
     }
+
 
     private void displayListOfPlayers(NbaPlayers players){
         StringBuilder stringBuilder = new StringBuilder();
