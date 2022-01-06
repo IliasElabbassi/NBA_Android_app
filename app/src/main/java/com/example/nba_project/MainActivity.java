@@ -127,5 +127,5 @@ public class MainActivity extends AppCompatActivity {
             this.layoutManager = new LinearLayoutManager(getApplicationContext());
             this.recyclerView.setLayoutManager(layoutManager);
         }
-    }
+    } 
 }
