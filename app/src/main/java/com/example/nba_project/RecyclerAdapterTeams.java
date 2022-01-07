@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,8 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         holder.fullname.setText(teams.get(position).getFullName());
         holder.abreviation.setText(teams.get(position).getAbbreviation());
         holder.id = teams.get(position).getId();
+        //holder.logo.setImageResource(R.drawable.testlogo);
+
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         private TextView city;
         private TextView fullname;
         private TextView division;
+        private ImageView logo;
         private int id;
 
         public MyviewHolder(@NonNull View itemView) {
@@ -92,6 +96,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             fullname = (TextView) itemView.findViewById(R.id.player_firstname);
             division = (TextView) itemView.findViewById(R.id.division);
             constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
+            logo = (ImageView) itemView.findViewById(R.id.logo);
         }
     }
 }
