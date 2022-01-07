@@ -33,8 +33,11 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/abreviation"
+
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/team_fullname"
         app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/player_firstname"
+  
         />
 
     <TextView
@@ -50,10 +53,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/division"
-        app:layout_constraintTop_toBottomOf="@+id/player_lastname" />
+        app:layout_constraintTop_toBottomOf="@+id/team_city" />
 
     <TextView
-        android:id="@+id/player_lastname"
+        android:id="@+id/team_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
@@ -64,11 +67,11 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/abreviation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/player_firstname"
+        app:layout_constraintStart_toEndOf="@+id/team_fullname"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/player_firstname"
+        android:id="@+id/team_fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -78,7 +81,8 @@
         android:text="TextView"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toTopOf="@+id/division"
-        app:layout_constraintEnd_toStartOf="@+id/player_lastname"
+        app:layout_constraintEnd_toStartOf="@+id/team_city"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 

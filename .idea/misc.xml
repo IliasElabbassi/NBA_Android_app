@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.1828125" />
         <entry key="..\:/Users/Ilias El Abbassi/StudioProjects/NBA_Android_app2/app/src/main/res/layout/activity_main.xml" value="0.1275" />
         <entry key="..\:/Users/Ilias El Abbassi/StudioProjects/NBA_Android_app2/app/src/main/res/layout/activity_team.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Ilias El Abbassi/StudioProjects/NBA_Android_app2/app/src/main/res/layout/appbar.xml" value="0.234375" />
@@ -20,6 +21,14 @@
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/activity_main.xml" value="0.325" />
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/activity_team.xml" value="0.325" />
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/team_layout.xml" value="0.325" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/activity_team.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/player_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/team_layout.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/team_layout_grid.xml" value="0.375" />
       </map>
     </option>
   </component>
