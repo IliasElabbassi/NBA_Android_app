@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,11 +75,10 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         }};
 
         if(getItemViewType(position)== VIEW_TYPE_LIST){
-            holder.division.setText(teamData.get("division"));
-            holder.city.setText(teamData.get("city"));
+            holder.fullname.setText(teamData.get("fullname"));
+        }else {
             holder.abreviation.setText(teamData.get("abreviation"));
         }
-        holder.fullname.setText(teams.get(position).getFullName());
         holder.id = teams.get(position).getId();
         //holder.logo.setImageResource(R.drawable.testlogo);
 
@@ -122,15 +122,19 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         public MyviewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
             if (viewType == VIEW_TYPE_LIST) {
-                abreviation = (TextView) itemView.findViewById(R.id.abreviation);
-                city = (TextView) itemView.findViewById(R.id.team_city);
-                division = (TextView) itemView.findViewById(R.id.division);
+                fullname = (TextView) itemView.findViewById(R.id.team_fullname);
+            }else{
+                abreviation = (TextView) itemView.findViewById(R.id.abreviation_team);
             }
-            fullname = (TextView) itemView.findViewById(R.id.team_fullname);
             constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
-
-
             logo = (ImageView) itemView.findViewById(R.id.logo);
+
+            itemView.findViewById(R.id.favorite_team_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("demo", "is onclicked");
+                }
+            });
         }
     }
 
