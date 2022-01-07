@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Team> teams;
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.LayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
     private RecyclerAdapterTeams recyclerAdapter;
 
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerView = (RecyclerView) findViewById(R.id.teams_recyclerView);
 
         this.recyclerAdapter = new RecyclerAdapterTeams(this, teams);
-        this.layoutManager = new LinearLayoutManager(getApplicationContext());
-        this.recyclerView.setLayoutManager(layoutManager);
+        this.linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        this.recyclerView.setLayoutManager(linearLayoutManager);
         this.recyclerView.setItemAnimator(new DefaultItemAnimator());
         this.recyclerView.setAdapter(recyclerAdapter);
     }
@@ -121,11 +121,16 @@ public class MainActivity extends AppCompatActivity {
         Switch sw = (Switch)findViewById(R.id.switchLayout);
 
         if(sw.isChecked()){
+            this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_GRID);
             this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
             this.recyclerView.setLayoutManager(gridLayoutManager);
         }else{
-            this.layoutManager = new LinearLayoutManager(getApplicationContext());
-            this.recyclerView.setLayoutManager(layoutManager);
+            this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_LIST);
+            this.linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            this.recyclerView.setLayoutManager(linearLayoutManager);
+
         }
+        this.recyclerAdapter.notifyDataSetChanged();
+
     } 
 }
