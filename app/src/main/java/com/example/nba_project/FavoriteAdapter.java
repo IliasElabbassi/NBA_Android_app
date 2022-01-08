@@ -33,8 +33,8 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        FavoriteEntity fl=favoriteEntities.get(i);
-        viewHolder.fullname.setText(fl.getFullname());
+        FavoriteEntity favoriteEntity=favoriteEntities.get(i);
+        viewHolder.fullname_team.setText(favoriteEntity.getFullname());
 
     }
     @Override
@@ -43,11 +43,11 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         //ImageView logo;
-        TextView fullname;
+        TextView fullname_team;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
            // logo=(ImageView)itemView.findViewById(R.id.logo);
-            fullname=(TextView)itemView.findViewById(R.id.fullname_team);
+            fullname_team=(TextView)itemView.findViewById(R.id.fullname_team);
         }
     }
 

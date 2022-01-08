@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.example.nba_project.data.API.API_Client;
 import com.example.nba_project.data.API.API_interface;
 import com.example.nba_project.data.model.Team;
 import com.example.nba_project.data.model.Teams;
+import com.example.nba_project.data.room.FavoriteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
     private RecyclerAdapterTeams recyclerAdapter;
+    public static FavoriteDatabase favoriteDatabase;
+
 
 
     @Override
@@ -46,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.teams = new ArrayList<Team>();
-
         setAdapter();
+        favoriteDatabase= Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"FavoriteDatabase").allowMainThreadQueries().build();
+
     }
 
     @Override
