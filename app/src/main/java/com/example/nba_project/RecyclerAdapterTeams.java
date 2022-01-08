@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -117,6 +118,8 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         private TextView fullname;
         private TextView division;
         private ImageView logo;
+        private Button favBtn;
+
         private int id;
 
         public MyviewHolder(@NonNull View itemView, int viewType) {
@@ -128,10 +131,15 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             }
             constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
             logo = (ImageView) itemView.findViewById(R.id.logo);
+            favBtn = itemView.findViewById(R.id.favorite_team_button);
 
             itemView.findViewById(R.id.favorite_team_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //TO WORK ON AFTER
+
+                        favBtn.setBackgroundResource(R.drawable.ic_favorite_red_24);
+
                     Log.d("demo", "is onclicked");
                 }
             });

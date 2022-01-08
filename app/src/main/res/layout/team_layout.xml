@@ -31,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/favorite_team_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
