@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private GridLayoutManager gridLayoutManager;
     private RecyclerAdapterTeams recyclerAdapter;
     public static FavoriteDatabase favoriteDatabase;
+    private Button favoritesListButton;
 
 
 
@@ -53,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
         favoriteDatabase= Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"FavoriteDatabase").allowMainThreadQueries().build();
 
+        favoritesListButton=(Button)findViewById(R.id.favorites_list_button);
+        favoritesListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,FavoritesListActivity.class));
+            }
+        });
     }
 
     @Override
