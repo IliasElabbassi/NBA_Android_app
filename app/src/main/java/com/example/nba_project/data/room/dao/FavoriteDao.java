@@ -5,7 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.nba_project.data.entity.FavoriteEntity;
+import com.example.nba_project.data.entity.FavoriteTeam;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ import java.util.List;
 public interface FavoriteDao {
 
     @Insert
-    public void addData(FavoriteEntity favoriteEntity);
+    public void addData(FavoriteTeam favoriteTeam);
 
     @Query("SELECT * FROM favoritelist")
-    public List<FavoriteEntity> getFavoriteData();
+    public List<FavoriteTeam> getFavoriteData();
 
     @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
     public int isFavorite(int id);
 
     @Delete
-    public void delete(FavoriteEntity favoriteEntity);
+    public void delete(FavoriteTeam favoriteTeam);
 
 }

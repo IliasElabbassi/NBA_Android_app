@@ -9,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nba_project.data.entity.FavoriteEntity;
+import com.example.nba_project.data.entity.FavoriteTeam;
 
 import java.util.List;
 
 
 public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
-    private List<FavoriteEntity> favoriteEntities;
+    private List<FavoriteTeam> favoriteEntities;
     Context context;
 
-    public FavoriteAdapter(List<FavoriteEntity> favoriteEntities, Context context) {
+    public FavoriteAdapter(List<FavoriteTeam> favoriteEntities, Context context) {
         this.favoriteEntities = favoriteEntities;
         this.context = context;
     }
@@ -33,8 +33,8 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        FavoriteEntity favoriteEntity=favoriteEntities.get(i);
-        viewHolder.fullname_team.setText(favoriteEntity.getFullname());
+        FavoriteTeam favoriteTeam =favoriteEntities.get(i);
+        viewHolder.fullname_team.setText(favoriteTeam.getFullname());
 
     }
     @Override

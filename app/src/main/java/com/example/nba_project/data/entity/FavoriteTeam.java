@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 
 @Entity(tableName = "favoritelist")
-public class FavoriteEntity {
+public class FavoriteTeam {
     @PrimaryKey
     private int id;
 

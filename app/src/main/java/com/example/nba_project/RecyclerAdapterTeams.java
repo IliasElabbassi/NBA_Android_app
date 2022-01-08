@@ -4,11 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,12 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nba_project.data.entity.FavoriteEntity;
+import com.example.nba_project.data.entity.FavoriteTeam;
 import com.example.nba_project.data.model.Team;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterTeams.MyviewHolder> {
 
@@ -96,17 +92,17 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             @Override
             public void onClick(View v) {
                 int id = teams.get(position).getId();
-                FavoriteEntity favoriteEntity = new FavoriteEntity();
-                favoriteEntity.setId(id);
-                favoriteEntity.setFullname(teams.get(position).getFullName());
+                FavoriteTeam favoriteTeam = new FavoriteTeam();
+                favoriteTeam.setId(id);
+                favoriteTeam.setFullname(teams.get(position).getFullName());
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id)!=1){
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_red_24);
-                    MainActivity.favoriteDatabase.favoriteDao().addData(favoriteEntity);
+                    MainActivity.favoriteDatabase.favoriteDao().addData(favoriteTeam);
 
                 }else {
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
-                    MainActivity.favoriteDatabase.favoriteDao().delete(favoriteEntity);
+                    MainActivity.favoriteDatabase.favoriteDao().delete(favoriteTeam);
 
                 }
             }
