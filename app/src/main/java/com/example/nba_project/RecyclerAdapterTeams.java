@@ -20,7 +20,6 @@ import com.example.nba_project.data.model.Team;
 import java.util.List;
 
 public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterTeams.MyviewHolder> {
-
     public static final String EXTRA_MESSAGE = "com.example.api_balldontlie.MESSAGE";
     public static final int VIEW_TYPE_LIST = 0;
     public static final int VIEW_TYPE_GRID = 1;
