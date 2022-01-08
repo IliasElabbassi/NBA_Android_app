@@ -4,22 +4,24 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import com.example.nba_project.data.entity.FavoriteList;
+
+import com.example.nba_project.data.entity.FavoriteEntity;
+
 import java.util.List;
 
 @Dao
 public interface FavoriteDao {
 
     @Insert
-    public void addData(FavoriteList favoriteList);
+    public void addData(FavoriteEntity favoriteEntity);
 
     @Query("SELECT * FROM favoritelist")
-    public List<FavoriteList> getFavoriteData();
+    public List<FavoriteEntity> getFavoriteData();
 
     @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
     public int isFavorite(int id);
 
     @Delete
-    public void delete(FavoriteList favoriteList);
+    public void delete(FavoriteEntity favoriteEntity);
 
 }
