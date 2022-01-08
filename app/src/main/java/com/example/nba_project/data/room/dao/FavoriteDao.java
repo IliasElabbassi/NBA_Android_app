@@ -8,7 +8,7 @@ import com.example.nba_project.data.entity.FavoriteList;
 import java.util.List;
 
 @Dao
-public interface favoriteDao {
+public interface FavoriteDao {
 
     @Insert
     public void addData(FavoriteList favoriteList);
