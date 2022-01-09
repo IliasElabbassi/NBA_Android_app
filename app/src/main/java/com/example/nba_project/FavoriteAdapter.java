@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,15 @@ import java.util.List;
 
 public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
     private List<FavoriteTeam> favoriteEntities;
+    private int teams_logos[];
+
     Context context;
 
-    public FavoriteAdapter(List<FavoriteTeam> favoriteEntities, Context context) {
+    public FavoriteAdapter(List<FavoriteTeam> favoriteEntities, Context context, int teams_logos[]) {
         this.favoriteEntities = favoriteEntities;
         this.context = context;
+        this.teams_logos = teams_logos;
+
     }
 
 
@@ -32,9 +37,11 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        FavoriteTeam favoriteTeam =favoriteEntities.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        FavoriteTeam favoriteTeam =favoriteEntities.get(position);
         viewHolder.fullname_team.setText(favoriteTeam.getFullname());
+        viewHolder.logo.setImageResource(teams_logos[position]);
+
 
     }
     @Override
@@ -42,11 +49,11 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
         return favoriteEntities.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        //ImageView logo;
+        ImageView logo;
         TextView fullname_team;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-           // logo=(ImageView)itemView.findViewById(R.id.logo);
+            logo=(ImageView)itemView.findViewById(R.id.logo);
             fullname_team=(TextView)itemView.findViewById(R.id.team_fullname);
         }
     }

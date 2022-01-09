@@ -16,6 +16,7 @@ public class FavoritesListActivity extends AppCompatActivity {
     private RecyclerView favoritesListRV;
     private FavoriteAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,13 @@ public class FavoritesListActivity extends AppCompatActivity {
 
     private void getFavoritesList() {
         List<FavoriteTeam> FavoritesList=MainActivity.favoriteDatabase.favoriteDao().getFavoriteData();
-        adapter=new FavoriteAdapter(FavoritesList,getApplicationContext());
+        adapter=new FavoriteAdapter(FavoritesList,getApplicationContext(),this.retrieveTeamsLogosExtra());
         favoritesListRV.setAdapter(adapter);
+    }
+
+    private  int[] retrieveTeamsLogosExtra(){
+        Bundle extras = getIntent().getExtras();
+        return extras.getIntArray("teams_logos");
+
     }
 }

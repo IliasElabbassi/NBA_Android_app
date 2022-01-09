@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private GridLayoutManager gridLayoutManager;
     private RecyclerAdapterTeams recyclerAdapter;
     public static FavoriteDatabase favoriteDatabase;
-    private Button favoritesListButton;
-    private int teams_logos [] = {
+    public int teams_logos [] = {
             R.drawable._0atl, R.drawable._1bos, R.drawable._2bkl, R.drawable._3cha, R.drawable._4chi, R.drawable._5cle, R.drawable._6dal, R.drawable._7den, R.drawable._8dep, R.drawable._9gsw,R.drawable._10hrl, R.drawable._11ind, R.drawable._12cli, R.drawable._13lal, R.drawable._14mem,
             R.drawable._15mia, R.drawable._16mil, R.drawable._17min, R.drawable._18nop, R.drawable._19nyc, R.drawable._20oct, R.drawable._21olm, R.drawable._22p76, R.drawable._23pho, R.drawable._24por, R.drawable._25skl, R.drawable._26sas, R.drawable._27terl, R.drawable._28uta, R.drawable._29was
     };
@@ -135,7 +134,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()){
             case R.id.favorites:
-                startActivity(new Intent(MainActivity.this,FavoritesListActivity.class));
+                Intent FavoritesListIntent = new Intent(MainActivity.this,FavoritesListActivity.class);
+                FavoritesListIntent.putExtra("teams_logos",this.teams_logos);
+                startActivity(FavoritesListIntent);
                 break;
         }
         return super.onOptionsItemSelected(item);

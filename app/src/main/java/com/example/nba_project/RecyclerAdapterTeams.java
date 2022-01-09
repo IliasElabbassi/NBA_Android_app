@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nba_project.data.entity.FavoriteTeam;
@@ -79,6 +78,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             @Override
                 public void onClick(View view) {
                 Intent intent = new Intent(context, Team_Activity.class);
+                intent.putExtra("team_logo",teams_logos[position]);
                 Bundle bundle = new Bundle();
                 bundle.putString("division", teams.get(position).getDivision());
                 bundle.putString("city",teams.get(position).getCity());

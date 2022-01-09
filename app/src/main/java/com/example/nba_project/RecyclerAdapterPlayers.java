@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,7 +47,6 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
         holder.lastname.setText(players.get(position).getLastName());
         holder.firstname.setText(players.get(position).getFirstName());
         holder.position.setText(players.get(position).getPosition());
-
         if(Objects.nonNull(players.get(position).getHeightFeet())){
             holder.height.setText(players.get(position).getHeightFeet().toString());
         }else{
@@ -57,7 +58,6 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
         }else{
             holder.position.setText("Pas d'info");
         }
-
 
 
         /**
@@ -79,6 +79,7 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
         private TextView firstname;
         private TextView position;
         private TextView height;
+        private ImageView logo;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +88,8 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
             firstname = (TextView) itemView.findViewById(R.id.player_firstname);
             position = (TextView) itemView.findViewById(R.id.position);
             height = (TextView) itemView.findViewById(R.id.height);
+            Log.d("logo","logo"+itemView.findViewById(R.id.logo));
+
 
         }
     }
