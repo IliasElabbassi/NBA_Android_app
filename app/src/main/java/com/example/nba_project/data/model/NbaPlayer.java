@@ -1,6 +1,8 @@
 package com.example.nba_project.data.model;
 
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,7 +16,7 @@ public class NbaPlayer {
     private String firstName;
     @SerializedName("height_feet")
     @Expose
-    private Object heightFeet;
+    private Integer heightFeet;
     @SerializedName("height_inches")
     @Expose
     private Object heightInches;
@@ -43,16 +45,13 @@ public class NbaPlayer {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstName) { this.firstName = firstName;
     }
 
-    public Object getHeightFeet() {
-        return heightFeet;
+    public Integer getHeightFeet() { return heightFeet;
     }
 
-    public void setHeightFeet(Object heightFeet) {
-        this.heightFeet = heightFeet;
+    public void setHeightFeet(Integer heightFeet) { this.heightFeet = heightFeet;
     }
 
     public Object getHeightInches() {

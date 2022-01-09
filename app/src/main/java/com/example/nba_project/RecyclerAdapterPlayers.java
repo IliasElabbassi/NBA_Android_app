@@ -2,6 +2,7 @@ package com.example.nba_project;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nba_project.data.model.NbaPlayer;
 import com.example.nba_project.data.model.Team;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nba_project.RecyclerAdapterPlayers.MyviewHolder> {
@@ -35,11 +38,28 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
         return new MyviewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
+
         holder.lastname.setText(players.get(position).getLastName());
         holder.firstname.setText(players.get(position).getFirstName());
         holder.position.setText(players.get(position).getPosition());
+
+        if(Objects.nonNull(players.get(position).getHeightFeet())){
+            holder.height.setText(players.get(position).getHeightFeet().toString());
+        }else{
+            holder.height.setText("Pas d'info");
+        }
+
+        if(Objects.nonNull(players.get(position).getPosition())){
+            holder.position.setText(players.get(position).getPosition());
+        }else{
+            holder.position.setText("Pas d'info");
+        }
+
+
+
         /**
         int h = (int) players.get(position).getHeightFeet();
         holder.height.setText(Integer.toString(h));
