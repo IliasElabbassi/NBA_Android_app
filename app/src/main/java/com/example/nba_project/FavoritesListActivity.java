@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.nba_project.data.entity.FavoriteTeam;
 
@@ -28,7 +29,6 @@ public class FavoritesListActivity extends AppCompatActivity {
 
     private void getFavoritesList() {
         List<FavoriteTeam> FavoritesList=MainActivity.favoriteDatabase.favoriteDao().getFavoriteData();
-
         adapter=new FavoriteAdapter(FavoritesList,getApplicationContext());
         favoritesListRV.setAdapter(adapter);
     }

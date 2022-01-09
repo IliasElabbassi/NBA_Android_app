@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.teams = new ArrayList<Team>();
-        setAdapter();
         favoriteDatabase= Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"FavoriteDatabase").allowMainThreadQueries().build();
+        favoriteDatabase.favoriteDao().initialize();
+
+        setAdapter();
 
         favoritesListButton=(Button)findViewById(R.id.favorites_list_button);
         favoritesListButton.setOnClickListener(new View.OnClickListener() {

@@ -24,4 +24,7 @@ public interface FavoriteDao {
     @Delete
     public void delete(FavoriteTeam favoriteTeam);
 
+    @Query("DELETE FROM favoritelist")
+    public  void initialize();
+
 }
