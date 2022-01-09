@@ -1,0 +1,1 @@
+1. use cardview  layout to use radius

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,30 +12,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nba_project.data.entity.FavoriteTeam;
 import com.example.nba_project.data.model.Team;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterTeams.MyviewHolder> {
-
     public static final String EXTRA_MESSAGE = "com.example.api_balldontlie.MESSAGE";
     public static final int VIEW_TYPE_LIST = 0;
     public static final int VIEW_TYPE_GRID = 1;
 
     private List<Team> teams;
+    private int teams_logos[];
     Context context;
     private int type = VIEW_TYPE_LIST;
 
 
 
-    public RecyclerAdapterTeams(Context context, List<Team> teams) {
+    public RecyclerAdapterTeams(Context context, List<Team> teams, int[] teams_logos) {
         this.teams = teams;
         this.context = context;
+        this.teams_logos = teams_logos;
     }
 
     public void setType(int type) {
@@ -66,38 +67,48 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterTeams.MyviewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        Map<String,String> teamData = new HashMap<String,String>(){{
-            put("division",teams.get(position).getDivision());
-            put("city",teams.get(position).getCity());
-            put("fullname",teams.get(position).getFullName());
-            put("abreviation",teams.get(position).getAbbreviation());
-        }};
-
         if(getItemViewType(position)== VIEW_TYPE_LIST){
-            holder.division.setText(teamData.get("division"));
-            holder.city.setText(teamData.get("city"));
-            holder.abreviation.setText(teamData.get("abreviation"));
+            holder.fullname.setText(teams.get(position).getFullName());
+        }else {
+            holder.abreviation.setText(teams.get(position).getAbbreviation());
         }
-        holder.fullname.setText(teams.get(position).getFullName());
-        holder.id = teams.get(position).getId();
-        //holder.logo.setImageResource(R.drawable.testlogo);
-
+        holder.logo.setImageResource(teams_logos[position]);
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
             @Override
                 public void onClick(View view) {
                 Intent intent = new Intent(context, Team_Activity.class);
+                intent.putExtra("team_logo",teams_logos[position]);
                 Bundle bundle = new Bundle();
-                bundle.putString("division", teamData.get("division"));
+                bundle.putString("division", teams.get(position).getDivision());
                 bundle.putString("city",teams.get(position).getCity());
                 bundle.putString("fullname", teams.get(position).getFullName());
                 bundle.putString("abreviation", teams.get(position).getAbbreviation());
-                bundle.putInt("id", holder.id);
+                bundle.putInt("id", teams.get(position).getId());
 
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
+        });
 
+        holder.favorite_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = teams.get(position).getId();
+                FavoriteTeam favoriteTeam = new FavoriteTeam();
+                favoriteTeam.setId(id);
+                favoriteTeam.setFullname(teams.get(position).getFullName());
+
+                if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id)!=1){
+                    holder.favorite_button.setImageResource(R.drawable.ic_favorite_red_24);
+                    MainActivity.favoriteDatabase.favoriteDao().addData(favoriteTeam);
+
+                }else {
+                    holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
+                    MainActivity.favoriteDatabase.favoriteDao().delete(favoriteTeam);
+
+                }
+            }
         });
     }
 
@@ -111,26 +122,23 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
 
     public class MyviewHolder extends RecyclerView.ViewHolder {
 
-        private ConstraintLayout constraint_layout;
+        private CardView constraint_layout;
         private TextView abreviation;
-        private TextView city;
         private TextView fullname;
-        private TextView division;
         private ImageView logo;
-        private int id;
+        private ImageView favorite_button;
 
         public MyviewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
             if (viewType == VIEW_TYPE_LIST) {
-                abreviation = (TextView) itemView.findViewById(R.id.abreviation);
-                city = (TextView) itemView.findViewById(R.id.team_city);
-                division = (TextView) itemView.findViewById(R.id.division);
+                fullname = (TextView) itemView.findViewById(R.id.team_fullname);
+            }else{
+                abreviation = (TextView) itemView.findViewById(R.id.abreviation_team);
             }
-            fullname = (TextView) itemView.findViewById(R.id.team_fullname);
-            constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
-
-
+            constraint_layout = (CardView) itemView.findViewById(R.id.constraint_layout);
             logo = (ImageView) itemView.findViewById(R.id.logo);
+            favorite_button = itemView.findViewById(R.id.favorite_team_button);
+
         }
     }
 

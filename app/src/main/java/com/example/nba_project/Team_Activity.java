@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nba_project.data.API.API_Client;
@@ -32,7 +33,6 @@ public class Team_Activity extends AppCompatActivity {
     private String division;
     private String city;
     private String abreviation;
-    private String image_url;
 
     private List<NbaPlayer> players;
 
@@ -74,11 +74,14 @@ public class Team_Activity extends AppCompatActivity {
         TextView TVcity = (TextView) findViewById(R.id.city_team);
         TextView TVdivision = (TextView) findViewById(R.id.divison_team);
         TextView TVabreviation = (TextView) findViewById(R.id.abreviation_team);
+        ImageView logo=(ImageView) findViewById(R.id.team_logo);
+
 
         TVfullname.setText(fullname);
         TVcity.setText(city);
         TVabreviation.setText(abreviation);
         TVdivision.setText(division);
+        logo.setImageResource(this.retrieveTeamsLogosExtra());
     }
 
     private void callPlayers(){
@@ -151,5 +154,11 @@ public class Team_Activity extends AppCompatActivity {
         this.recyclerView.setLayoutManager(layoutManager);
         this.recyclerView.setItemAnimator(new DefaultItemAnimator());
         this.recyclerView.setAdapter(recyclerAdapter);
+    }
+
+    private  int retrieveTeamsLogosExtra(){
+        Bundle extras = getIntent().getExtras();
+        return extras.getInt("team_logo");
+
     }
 }

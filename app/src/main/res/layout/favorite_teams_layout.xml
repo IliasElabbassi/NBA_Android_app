@@ -5,14 +5,10 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_marginTop="25px"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp"
-
+    android:layout_margin="20px"
     android:background="@color/light_grey"
-    tools:layout_editor_absoluteX="5dp"
-    tools:layout_editor_absoluteY="0dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+  >
 
     <ImageView
         android:id="@+id/logo"
@@ -29,22 +25,11 @@
         android:id="@+id/team_fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="4dp"
+        android:layout_gravity="center|center_vertical"
         android:text="TextView"
-        android:layout_gravity="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"/>
 
-    <ImageView
-        android:id="@+id/favorite_team_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_gravity="right|center"
-        android:background="@drawable/ic_favorite_shadow_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.cardview.widget.CardView >
+</androidx.cardview.widget.CardView>
