@@ -47,7 +47,7 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
            // logo=(ImageView)itemView.findViewById(R.id.logo);
-            fullname_team=(TextView)itemView.findViewById(R.id.fullname_team);
+            fullname_team=(TextView)itemView.findViewById(R.id.team_fullname);
         }
     }
 
