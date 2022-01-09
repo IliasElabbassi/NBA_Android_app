@@ -12,51 +12,47 @@
         android:id="@+id/abreviation_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city_team" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/city_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="52dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fullname_team"
+        app:layout_constraintTop_toTopOf="@id/fullname_team" />
 
     <TextView
         android:id="@+id/fullname_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="52dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/abreviation_team"
         app:layout_constraintTop_toBottomOf="@+id/abreviation_team" />
 
     <TextView
         android:id="@+id/divison_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="52dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname_team" />
+        app:layout_constraintStart_toStartOf="@+id/city_team"
+        app:layout_constraintTop_toBottomOf="@+id/city_team" />
 
     <ImageView
         android:id="@+id/imageView2"
