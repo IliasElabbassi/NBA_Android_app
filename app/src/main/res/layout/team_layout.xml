@@ -5,8 +5,9 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_margin="20px"
-    android:background="#ED9292"
+    android:layout_marginTop="20px"
+    android:layout_marginBottom="20px"
+    android:background="@color/light_grey"
     tools:layout_editor_absoluteX="5dp"
     tools:layout_editor_absoluteY="0dp">
 
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:paddingLeft="4dp"
-        android:textColor="#FAFAFA"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
