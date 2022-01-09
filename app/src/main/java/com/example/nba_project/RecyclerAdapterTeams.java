@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -119,7 +120,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
 
     public class MyviewHolder extends RecyclerView.ViewHolder {
 
-        private ConstraintLayout constraint_layout;
+        private CardView constraint_layout;
         private TextView abreviation;
         private TextView fullname;
         private ImageView logo;
@@ -132,7 +133,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             }else{
                 abreviation = (TextView) itemView.findViewById(R.id.abreviation_team);
             }
-            constraint_layout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout);
+            constraint_layout = (CardView) itemView.findViewById(R.id.constraint_layout);
             logo = (ImageView) itemView.findViewById(R.id.logo);
             favorite_button = itemView.findViewById(R.id.favorite_team_button);
 
