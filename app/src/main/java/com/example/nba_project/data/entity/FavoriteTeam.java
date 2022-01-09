@@ -1,10 +1,8 @@
 package com.example.nba_project.data.entity;
 
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 
 @Entity(tableName = "favoritelist")
 public class FavoriteTeam {
