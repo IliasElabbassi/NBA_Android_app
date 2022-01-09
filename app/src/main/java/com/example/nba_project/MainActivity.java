@@ -38,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
     API_interface apiService = API_Client.getClient().create(API_interface.class);
 
     private List<Team> teams;
-
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
     private RecyclerAdapterTeams recyclerAdapter;
     public static FavoriteDatabase favoriteDatabase;
     private Button favoritesListButton;
-
-
+    private int teams_logos [] = {
+            R.drawable._0atl, R.drawable._1bos, R.drawable._2bkl, R.drawable._3cha, R.drawable._4chi, R.drawable._5cle, R.drawable._6dal, R.drawable._7den, R.drawable._8dep, R.drawable._9gsw,R.drawable._10hrl, R.drawable._11ind, R.drawable._12cli, R.drawable._13lal, R.drawable._14mem,
+            R.drawable._15mia, R.drawable._16mil, R.drawable._17min, R.drawable._18nop, R.drawable._19nyc, R.drawable._20oct, R.drawable._21olm, R.drawable._22p76, R.drawable._23pho, R.drawable._24por, R.drawable._25skl, R.drawable._26sas, R.drawable._27terl, R.drawable._28uta, R.drawable._29was
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     private void setAdapter() {
         this.recyclerView = (RecyclerView) findViewById(R.id.teams_recyclerView);
 
-        this.recyclerAdapter = new RecyclerAdapterTeams(this, teams);
+        this.recyclerAdapter = new RecyclerAdapterTeams(this, teams,teams_logos);
         this.linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         this.recyclerView.setLayoutManager(linearLayoutManager);
         this.recyclerView.setItemAnimator(new DefaultItemAnimator());

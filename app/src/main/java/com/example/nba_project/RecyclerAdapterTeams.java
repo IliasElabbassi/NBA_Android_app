@@ -27,14 +27,16 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
     public static final int VIEW_TYPE_GRID = 1;
 
     private List<Team> teams;
+    private int teams_logos[];
     Context context;
     private int type = VIEW_TYPE_LIST;
 
 
 
-    public RecyclerAdapterTeams(Context context, List<Team> teams) {
+    public RecyclerAdapterTeams(Context context, List<Team> teams, int[] teams_logos) {
         this.teams = teams;
         this.context = context;
+        this.teams_logos = teams_logos;
     }
 
     public void setType(int type) {
@@ -71,7 +73,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         }else {
             holder.abreviation.setText(teams.get(position).getAbbreviation());
         }
-        //holder.logo.setImageResource(R.drawable.testlogo);
+        holder.logo.setImageResource(teams_logos[position]);
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
             @Override
