@@ -24,7 +24,7 @@
         <entry key="app/src/main/res/drawable/ic_favorite_shadow_24.xml" value="0.3260416666666667" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_team.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/favorite_teams_layout.xml" value="0.20520833333333333" />

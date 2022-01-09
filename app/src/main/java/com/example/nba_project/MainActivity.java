@@ -57,14 +57,6 @@ public class MainActivity extends AppCompatActivity {
         favoriteDatabase.favoriteDao().initialize();
 
         setAdapter();
-
-        favoritesListButton=(Button)findViewById(R.id.favorites_list_button);
-        favoritesListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,FavoritesListActivity.class));
-            }
-        });
     }
 
     @Override
@@ -132,6 +124,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (item.getItemId()){
+            case R.id.favorites:
+                startActivity(new Intent(MainActivity.this,FavoritesListActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void switchLayout(View view){

@@ -10,6 +10,7 @@
     tools:layout_editor_absoluteX="5dp"
     tools:layout_editor_absoluteY="0dp">
 
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
