@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +54,7 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Team_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("team_logo",teams_logos[position]);
                 Bundle bundle = new Bundle();
                 bundle.putString("division", favoriteEntities.get(position).getDivision());
@@ -76,13 +78,13 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
     public class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView logo;
         private TextView fullname_team;
-        private  ConstraintLayout constraintLayout;
+        private CardView constraintLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             logo= (ImageView) itemView.findViewById(R.id.logo);
             fullname_team= (TextView) itemView.findViewById(R.id.team_fullname);
-            constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.constraint_layout_favorite);
+            constraintLayout = (CardView) itemView.findViewById(R.id.card_view_favorite);
         }
     }
 

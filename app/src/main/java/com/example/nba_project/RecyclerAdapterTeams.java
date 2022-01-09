@@ -137,7 +137,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             }else{
                 abreviation = (TextView) itemView.findViewById(R.id.abreviation_team);
             }
-            constraint_layout = (CardView) itemView.findViewById(R.id.constraint_layout_favorite);
+            constraint_layout = (CardView) itemView.findViewById(R.id.card_view_favorite);
             logo = (ImageView) itemView.findViewById(R.id.logo);
             favorite_button = itemView.findViewById(R.id.favorite_team_button);
 
