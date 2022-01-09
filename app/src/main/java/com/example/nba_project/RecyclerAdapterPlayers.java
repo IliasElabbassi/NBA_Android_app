@@ -1,9 +1,7 @@
 package com.example.nba_project;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nba_project.data.model.NbaPlayer;
-import com.example.nba_project.data.model.Team;
 
 import java.util.List;
 import java.util.Objects;
@@ -43,10 +40,10 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
-
         holder.lastname.setText(players.get(position).getLastName());
         holder.firstname.setText(players.get(position).getFirstName());
         holder.position.setText(players.get(position).getPosition());
+
         if(Objects.nonNull(players.get(position).getHeightFeet())){
             holder.height.setText(players.get(position).getHeightFeet().toString());
         }else{
@@ -58,12 +55,6 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
         }else{
             holder.position.setText("Pas d'info");
         }
-
-
-        /**
-        int h = (int) players.get(position).getHeightFeet();
-        holder.height.setText(Integer.toString(h));
-        **/
     }
 
     @Override
@@ -89,8 +80,6 @@ public class RecyclerAdapterPlayers extends  RecyclerView.Adapter<com.example.nb
             position = (TextView) itemView.findViewById(R.id.position);
             height = (TextView) itemView.findViewById(R.id.height);
             Log.d("logo","logo"+itemView.findViewById(R.id.logo));
-
-
         }
     }
 }

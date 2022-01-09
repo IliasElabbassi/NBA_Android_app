@@ -20,6 +20,7 @@ import com.example.nba_project.data.model.Team;
 import java.util.List;
 
 public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterTeams.MyviewHolder> {
+
     public static final String EXTRA_MESSAGE = "com.example.api_balldontlie.MESSAGE";
     public static final int VIEW_TYPE_LIST = 0;
     public static final int VIEW_TYPE_GRID = 1;
@@ -28,8 +29,6 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
     private int teams_logos[];
     Context context;
     private int type = VIEW_TYPE_LIST;
-
-
 
     public RecyclerAdapterTeams(Context context, List<Team> teams, int[] teams_logos) {
         this.teams = teams;
@@ -108,7 +107,6 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
                 }else {
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteTeam);
-
                 }
             }
         });
@@ -140,8 +138,6 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             constraint_layout = (CardView) itemView.findViewById(R.id.card_view_favorite);
             logo = (ImageView) itemView.findViewById(R.id.logo);
             favorite_button = itemView.findViewById(R.id.favorite_team_button);
-
         }
     }
-
 }

@@ -65,7 +65,6 @@ public class Team_Activity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         callPlayers();
     }
 
@@ -75,8 +74,6 @@ public class Team_Activity extends AppCompatActivity {
         TextView TVdivision = (TextView) findViewById(R.id.divison_team);
         TextView TVabreviation = (TextView) findViewById(R.id.abreviation_team);
         ImageView logo=(ImageView) findViewById(R.id.team_logo);
-
-
         TVfullname.setText(fullname);
         TVcity.setText(city);
         TVabreviation.setText(abreviation);
@@ -86,7 +83,6 @@ public class Team_Activity extends AppCompatActivity {
 
     private void callPlayers(){
         final int[] page = {0,0};
-
         Call<NbaPlayers> call_players = apiService.getPlayersWithPage(page[0]);
 
         call_players.enqueue(new Callback<NbaPlayers>() {

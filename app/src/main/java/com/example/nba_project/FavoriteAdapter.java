@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nba_project.data.entity.FavoriteTeam;
@@ -31,9 +30,7 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
         this.favoriteEntities = favoriteEntities;
         this.context = context;
         this.teams_logos = teams_logos;
-
     }
-
 
     @NonNull
     @Override
@@ -42,13 +39,11 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
         return new ViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
         FavoriteTeam favoriteTeam =favoriteEntities.get(position);
         viewHolder.fullname_team.setText(favoriteTeam.getFullname());
         viewHolder.logo.setImageResource(teams_logos[position]);
-
 
         viewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override

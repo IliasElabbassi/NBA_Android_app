@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAdapter() {
         this.recyclerView = (RecyclerView) findViewById(R.id.teams_recyclerView);
-
         this.recyclerAdapter = new RecyclerAdapterTeams(this, teams,teams_logos);
         this.linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         this.recyclerView.setLayoutManager(linearLayoutManager);
@@ -112,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         getSupportActionBar().setIcon(R.drawable.ic_favorite_shadow_24);
-
 
         MenuItem menuItem = menu.findItem(R.id.search);
         androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
@@ -156,9 +154,7 @@ public class MainActivity extends AppCompatActivity {
             this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_LIST);
             this.linearLayoutManager = new LinearLayoutManager(getApplicationContext());
             this.recyclerView.setLayoutManager(linearLayoutManager);
-
         }
         this.recyclerAdapter.notifyDataSetChanged();
-
-    } 
+    }
 }
