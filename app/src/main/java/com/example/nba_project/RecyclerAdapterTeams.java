@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +88,8 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
-        });
+        }
+        );
 
         holder.favorite_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,11 +98,13 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
                 FavoriteTeam favoriteTeam = new FavoriteTeam();
                 favoriteTeam.setId(id);
                 favoriteTeam.setFullname(teams.get(position).getFullName());
+                favoriteTeam.setAbbrevation(teams.get(position).getAbbreviation());
+                favoriteTeam.setCity(teams.get(position).getCity());
+                favoriteTeam.setDivision(teams.get(position).getDivision());
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id)!=1){
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_red_24);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteTeam);
-
                 }else {
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteTeam);
@@ -135,7 +137,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             }else{
                 abreviation = (TextView) itemView.findViewById(R.id.abreviation_team);
             }
-            constraint_layout = (CardView) itemView.findViewById(R.id.constraint_layout);
+            constraint_layout = (CardView) itemView.findViewById(R.id.constraint_layout_favorite);
             logo = (ImageView) itemView.findViewById(R.id.logo);
             favorite_button = itemView.findViewById(R.id.favorite_team_button);
 

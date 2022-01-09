@@ -54,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.teams = new ArrayList<Team>();
-        favoriteDatabase= Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"FavoriteDatabase").allowMainThreadQueries().build();
+        favoriteDatabase = Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"FavoriteDatabase")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
         favoriteDatabase.favoriteDao().initialize();
 
         setAdapter();
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "RedVelvet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Search a Team", Toast.LENGTH_SHORT).show();
                 return true;
             }
 

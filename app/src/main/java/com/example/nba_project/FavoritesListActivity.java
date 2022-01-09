@@ -12,10 +12,8 @@ import com.example.nba_project.data.entity.FavoriteTeam;
 import java.util.List;
 
 public class FavoritesListActivity extends AppCompatActivity {
-
     private RecyclerView favoritesListRV;
     private FavoriteAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +35,5 @@ public class FavoritesListActivity extends AppCompatActivity {
     private  int[] retrieveTeamsLogosExtra(){
         Bundle extras = getIntent().getExtras();
         return extras.getIntArray("teams_logos");
-
     }
 }
