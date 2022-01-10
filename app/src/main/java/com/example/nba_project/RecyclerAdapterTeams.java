@@ -20,6 +20,7 @@ import com.example.nba_project.data.entity.FavoriteTeam;
 import com.example.nba_project.data.model.Team;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -31,9 +32,9 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
 
     private List<Team> teams;
     private List<Team> AllTeams;
+    Context context;
 
     private int teams_logos[];
-    Context context;
     private int type = VIEW_TYPE_LIST;
 
     public RecyclerAdapterTeams(Context context, List<Team> teams, int[] teams_logos) {
@@ -129,39 +130,41 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
 
     @Override
     public Filter getFilter() {
+        Filter filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                List<Team> filteredTeams = new ArrayList<Team>();
+
+                if(charSequence.toString().isEmpty()){
+                    filteredTeams.addAll(AllTeams);
+                }else{
+                    for(Team team: AllTeams){
+                        String teamFullName = team.getFullName().toLowerCase(Locale.ROOT);
+                        String toCompareTo = charSequence.toString().toLowerCase(Locale.ROOT);
+                        if(teamFullName.contains(toCompareTo)){
+                            filteredTeams.add(team);
+                        }
+                    }
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredTeams;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                teams.clear();
+                teams.addAll((ArrayList<Team>) filterResults.values);
+                notifyDataSetChanged();
+            }
+        };
+
         return filter;
     }
 
-    Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Team> filteredTeams = new ArrayList<Team>();
 
-            if(charSequence.toString().isEmpty()){
-                filteredTeams.addAll(AllTeams);
-            }else{
-                for(Team team: AllTeams){
-                    String teamFullName = team.getFullName().toLowerCase(Locale.ROOT);
-                    String toCompareTo = charSequence.toString().toLowerCase(Locale.ROOT);
-                    if(teamFullName.contains(toCompareTo)){
-                        filteredTeams.add(team);
-                    }
-                }
-            }
-
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filteredTeams;
-
-            return filterResults;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            teams.clear();
-            teams.addAll((ArrayList<Team>)filterResults.values);
-            notifyDataSetChanged();
-        }
-    };
 
     public class MyviewHolder extends RecyclerView.ViewHolder {
 

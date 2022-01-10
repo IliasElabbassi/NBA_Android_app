@@ -118,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "Search a Team", Toast.LENGTH_SHORT).show();
-                return true;
+                return false;
             }
 
             @Override
