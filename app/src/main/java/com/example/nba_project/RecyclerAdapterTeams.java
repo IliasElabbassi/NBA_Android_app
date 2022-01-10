@@ -129,7 +129,7 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
 
     @Override
     public Filter getFilter() {
-        return null;
+        return filter;
     }
 
     Filter filter = new Filter() {
