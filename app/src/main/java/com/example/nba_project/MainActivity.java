@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
+
+    OrientationEventListener myOrientationEventListener ;
+    boolean landscape;
+
     private RecyclerAdapterTeams recyclerAdapter;
     public static FavoriteDatabase favoriteDatabase;
     public int teams_logos [] = {
@@ -154,7 +159,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(sw.isChecked()){
             this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_GRID);
-            this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            if(landscape){
+                this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
+            }else {
+                this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            }
             this.recyclerView.setLayoutManager(gridLayoutManager);
         }else{
             this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_LIST);
@@ -162,5 +171,17 @@ public class MainActivity extends AppCompatActivity {
             this.recyclerView.setLayoutManager(linearLayoutManager);
         }
         this.recyclerAdapter.notifyDataSetChanged();
+    }
+
+    public void setupOnChangedOrientation(){
+        this.landscape = false;
+        myOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_FASTEST) {
+            @Override
+            public void onOrientationChanged(int i) {
+                if(landscape){
+                    landscape = false;
+                }else landscape = true;
+            }
+        };
     }
 }
