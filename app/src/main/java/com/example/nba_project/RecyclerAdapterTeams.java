@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,22 +82,21 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         holder.logo.setImageResource(teams_logos[position]);
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View view) {
-                Intent intent = new Intent(context, Team_Activity.class);
-                intent.putExtra("team_logo",teams_logos[position]);
-                Bundle bundle = new Bundle();
-                bundle.putString("division", teams.get(position).getDivision());
-                bundle.putString("city",teams.get(position).getCity());
-                bundle.putString("fullname", teams.get(position).getFullName());
-                bundle.putString("abreviation", teams.get(position).getAbbreviation());
-                bundle.putInt("id", teams.get(position).getId());
+                @Override
+                    public void onClick(View view) {
+                    Intent intent = new Intent(context, Team_Activity.class);
+                    intent.putExtra("team_logo",teams_logos[position]);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("division", teams.get(position).getDivision());
+                    bundle.putString("city",teams.get(position).getCity());
+                    bundle.putString("fullname", teams.get(position).getFullName());
+                    bundle.putString("abreviation", teams.get(position).getAbbreviation());
+                    bundle.putInt("id", teams.get(position).getId());
 
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-            }
-        }
-        );
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
 
         holder.favorite_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,30 +133,35 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         Filter filter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
+                FilterResults filterResults = new FilterResults();
                 List<Team> filteredTeams = new ArrayList<Team>();
 
                 if(charSequence.toString().isEmpty()){
                     filteredTeams.addAll(AllTeams);
                 }else{
+                    AllTeams.addAll(teams);
                     for(Team team: AllTeams){
                         String teamFullName = team.getFullName().toLowerCase(Locale.ROOT);
                         String toCompareTo = charSequence.toString().toLowerCase(Locale.ROOT);
                         if(teamFullName.contains(toCompareTo)){
                             filteredTeams.add(team);
+                            Log.d("ILIAS","test fullName" + teamFullName.toString());
+                            Log.d("ILIAS","test toCompare" + teamFullName.toString());
                         }
                     }
                 }
 
-                FilterResults filterResults = new FilterResults();
                 filterResults.values = filteredTeams;
+                filterResults.count = filteredTeams.size();
 
                 return filterResults;
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                teams.clear();
-                teams.addAll((ArrayList<Team>) filterResults.values);
+                //teams.addAll((ArrayList<Team>) filterResults.values);
+                teams = (List<Team>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
