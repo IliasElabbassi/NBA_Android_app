@@ -71,6 +71,14 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         return new MyviewHolder(view,viewType);
     }
 
+    public void setAllTeams(List<Team> allTeams){
+        this.AllTeams = allTeams;
+    }
+
+    public List<Team> getAllTeams() {
+        return AllTeams;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterTeams.MyviewHolder holder, @SuppressLint("RecyclerView") int position) {
 
@@ -128,6 +136,10 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         return 0;
     }
 
+    public List<Team> getTeams(){
+        return this.teams;
+    }
+
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
@@ -135,20 +147,23 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             protected FilterResults performFiltering(CharSequence charSequence) {
                 FilterResults filterResults = new FilterResults();
                 List<Team> filteredTeams = new ArrayList<Team>();
+                boolean found = false;
 
                 if(charSequence.toString().isEmpty()){
                     filteredTeams.addAll(AllTeams);
                 }else{
-                    AllTeams.addAll(teams);
                     for(Team team: AllTeams){
                         String teamFullName = team.getFullName().toLowerCase(Locale.ROOT);
                         String toCompareTo = charSequence.toString().toLowerCase(Locale.ROOT);
                         if(teamFullName.contains(toCompareTo)){
                             filteredTeams.add(team);
-                            Log.d("ILIAS","test fullName" + teamFullName.toString());
-                            Log.d("ILIAS","test toCompare" + teamFullName.toString());
+                            found = true;
                         }
                     }
+                }
+
+                if(!found){
+                    filteredTeams = AllTeams;
                 }
 
                 filterResults.values = filteredTeams;

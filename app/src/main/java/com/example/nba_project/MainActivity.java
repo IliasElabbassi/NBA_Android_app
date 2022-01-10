@@ -2,6 +2,7 @@ package com.example.nba_project;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         favoriteDatabase.favoriteDao().initialize();
 
         setAdapter();
+        initRecyclerViewDataForSearch();
     }
 
     @Override
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         callTeams();
     }
 
+    private void initRecyclerViewDataForSearch(){
+        recyclerAdapter.setAllTeams(recyclerAdapter.getTeams());
+    }
     private void callTeams(){
         Call<Teams> call_teams = apiService.getTeams();
 
@@ -124,10 +129,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //recyclerAdapter.getFilter().filter(newText);
+                recyclerAdapter.setTeams(recyclerAdapter.getAllTeams());
+                recyclerAdapter.notifyDataSetChanged();
                 return true;
             }
         });
+
 
         return super.onCreateOptionsMenu(menu);
     }
