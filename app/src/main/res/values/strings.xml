@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NBA</string>
+    <string name="app_name_part1">NBA</string>
+    <string name="app_name_part2">INFO</string>
 </resources>
