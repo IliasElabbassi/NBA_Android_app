@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+  
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,15 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Switch;
-import android.widget.Toast;
 
 
 import com.example.nba_project.data.API.API_Client;
@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
+
+    OrientationEventListener myOrientationEventListener ;
+    boolean landscape;
+
     private RecyclerAdapterTeams recyclerAdapter;
     public static FavoriteDatabase favoriteDatabase;
     public int teams_logos [] = {
@@ -138,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -160,7 +163,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(sw.isChecked()){
             this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_GRID);
-            this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            if(landscape){
+                this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
+            }else {
+                this.gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            }
             this.recyclerView.setLayoutManager(gridLayoutManager);
         }else{
             this.recyclerAdapter.setType(RecyclerAdapterTeams.VIEW_TYPE_LIST);
@@ -168,5 +175,17 @@ public class MainActivity extends AppCompatActivity {
             this.recyclerView.setLayoutManager(linearLayoutManager);
         }
         this.recyclerAdapter.notifyDataSetChanged();
+    }
+
+    public void setupOnChangedOrientation(){
+        this.landscape = false;
+        myOrientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_FASTEST) {
+            @Override
+            public void onOrientationChanged(int i) {
+                if(landscape){
+                    landscape = false;
+                }else landscape = true;
+            }
+        };
     }
 }
