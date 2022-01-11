@@ -7,7 +7,7 @@ import com.example.nba_project.data.entity.FavoriteTeam;
 import com.example.nba_project.data.room.dao.FavoriteDao;
 
 
-@Database(entities = {FavoriteTeam.class}, version = 3)
+@Database(entities = {FavoriteTeam.class}, version = 2)
 public abstract class FavoriteDatabase extends RoomDatabase {
     public abstract FavoriteDao favoriteDao();
 }

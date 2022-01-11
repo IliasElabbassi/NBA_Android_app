@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
-        favoriteDatabase.favoriteDao().initialize();
 
         setAdapter();
         initRecyclerViewDataForSearch();
