@@ -49,6 +49,9 @@ public class Team_Activity extends AppCompatActivity {
 
         Toolbar toolbar=findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+        
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         this.players = new ArrayList<NbaPlayer>();
 

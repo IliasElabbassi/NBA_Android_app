@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/favorites_list_title"
             android:text="MY FAVORITES TEAMS"
+            android:textSize="15dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

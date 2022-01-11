@@ -28,10 +28,13 @@
         <entry key="..\:/decv-projects_2021/Android_dev/nba_project/app/src/main/res/layout/team_layout.xml" value="0.325" />
         <entry key="app/src/main/res/drawable/ic_favorite_red_24.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/drawable/ic_logo_app.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout-land/activity_team.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3184308369793922" />
         <entry key="app/src/main/res/layout/activity_team.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/favorite_teams_layout.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/team_layout.xml" value="0.175" />
       </map>
     </option>
   </component>

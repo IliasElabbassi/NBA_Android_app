@@ -24,6 +24,9 @@ public class FavoritesListActivity extends AppCompatActivity {
         Toolbar toolbar=findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         favoritesListRV = (RecyclerView) findViewById(R.id.favorites_list_recyclerView);
         favoritesListRV.setHasFixedSize(true);
         favoritesListRV.setLayoutManager(new LinearLayoutManager(this));
