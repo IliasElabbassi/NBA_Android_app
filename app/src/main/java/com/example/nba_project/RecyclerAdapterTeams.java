@@ -69,6 +69,8 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
         return new MyviewHolder(view,viewType);
     }
 
+
+
     public void setAllTeams(List<Team> allTeams){
         this.AllTeams = allTeams;
     }
@@ -86,6 +88,13 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
             holder.abreviation.setText(teams.get(position).getAbbreviation());
         }
         holder.logo.setImageResource(teams_logos[position]);
+
+        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(teams.get(position).getId())==1){
+            holder.favorite_button.setImageResource(R.drawable.ic_favorite_red_24);
+        }else {
+            holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
+
+        }
 
         holder.constraint_layout.setOnClickListener(new View.OnClickListener() {
                 @Override
