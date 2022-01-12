@@ -11,6 +11,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -127,10 +128,12 @@ public class RecyclerAdapterTeams extends  RecyclerView.Adapter<RecyclerAdapterT
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id)!=1){
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_red_24);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteTeam);
+                    Toast.makeText(context,favoriteTeam.getFullname()+" has been added to favorites", Toast.LENGTH_SHORT).show();
                 }else {
                     holder.favorite_button.setImageResource(R.drawable.ic_favorite_shadow_24);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteTeam);
                 }
+
             }
         });
     }
